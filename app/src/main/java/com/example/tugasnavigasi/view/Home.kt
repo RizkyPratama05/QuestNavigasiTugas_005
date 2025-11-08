@@ -62,3 +62,16 @@ fun TampilanUtama(
         )
         Spacer(modifier = Modifier.padding(top = 70.dp))
 
+        Button(
+            modifier = Modifier.fillMaxWidth(1f)
+                .padding(start = 110.dp, end = 100.dp)
+                .size(40.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = colorResource(id = R.color.coklat)
+            ),
+            onClick = OnMasukBtnClick
+        ) {
+            Text(text = stringResource(id = R.string.masuk))
+        }
+    }
+}
