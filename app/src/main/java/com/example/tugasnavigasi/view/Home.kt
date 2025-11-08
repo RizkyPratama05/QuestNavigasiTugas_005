@@ -31,3 +31,6 @@ import com.example.tugasnavigasi.R
 fun TampilanUtama(
     OnMasukBtnClick : () -> Unit
 ){
+    Column(modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
