@@ -48,3 +48,17 @@ fun TampilanUtama(
                 .size(size = 350.dp)
                 .padding(top = 100.dp)
         )
+        Text(
+            text = stringResource(id = R.string.namaku),
+            fontFamily = FontFamily.Serif,
+            fontWeight = FontWeight.Bold,
+            color = colorResource(id = R.color.coklat),
+            modifier = Modifier.padding(top = 70.dp)
+        )
+        Text(
+            text = stringResource(id = R.string.nim),
+            fontFamily = FontFamily.Serif,
+            fontStyle = FontStyle.Italic
+        )
+        Spacer(modifier = Modifier.padding(top = 70.dp))
+
