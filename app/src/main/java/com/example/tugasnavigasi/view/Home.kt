@@ -41,3 +41,10 @@ fun TampilanUtama(
             fontWeight = FontWeight.Bold,
             color = colorResource(id = R.color.coklat)
         )
+        Image(
+            painter = painterResource(id = R.drawable.rabg),
+            contentDescription = null,
+            modifier = Modifier
+                .size(size = 350.dp)
+                .padding(top = 100.dp)
+        )
