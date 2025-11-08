@@ -34,3 +34,10 @@ fun TampilanUtama(
     Column(modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center) {
+        Text(modifier = Modifier.padding(top = 130.dp),
+            text = stringResource(id = R.string.welcome),
+            fontSize = 30.sp,
+            fontFamily = FontFamily.Monospace,
+            fontWeight = FontWeight.Bold,
+            color = colorResource(id = R.color.coklat)
+        )
