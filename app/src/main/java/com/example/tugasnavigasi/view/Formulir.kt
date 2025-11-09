@@ -103,3 +103,7 @@ fun FormPendaftaran(
                 )
             )
         ) {
+            Column(
+                modifier = Modifier,
+                verticalArrangement = Arrangement.Top
+            )
