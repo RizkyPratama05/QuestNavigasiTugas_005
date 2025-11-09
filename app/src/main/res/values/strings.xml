@@ -8,12 +8,14 @@
     <string name="tampil">Tampilan Data</string>
     <string name="home">Form Isian</string>
     <string name="status">STATUS PERKAWINAN</string>
+    <string name="status1">STATUS</string>
     <string name="namaku">Rizky Pratama Putra</string>
     <string name="nim">20230140005</string>
     <string name="welcome">Selamat Datang</string>
     <string name="masuk">Masuk</string>
     <string name="beranda">Beranda</string>
     <string name="formulir">Formulir Pendaftaran</string>
+    <string name="btnformulir">Formulir</string>
     <string name="kembali">Kembali</string>
     <string name="list">List Daftar Peserta</string>
 </resources>
