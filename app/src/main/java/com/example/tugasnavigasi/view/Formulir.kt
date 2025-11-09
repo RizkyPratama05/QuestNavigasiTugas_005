@@ -229,3 +229,31 @@ fun FormPendaftaran(
 
                 Spacer(modifier = Modifier.padding(top = 10.dp))
 
+                Text(
+                    text = stringResource(id = R.string.alamat),
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = FontFamily.SansSerif,
+                    color = colorResource(id = R.color.coklat),
+                    modifier = Modifier
+                        .padding(top = 20.dp, start = 20.dp)
+                )
+
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                OutlinedTextField(
+                    value = alamat,
+                    singleLine = true,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
+                        .height(height = 70.dp),
+                    label = {
+                        Text(
+                            text = "Isikan alamat",
+                            color = colorResource(id = R.color.coklat)
+                        )
+                    },
+                    onValueChange = {
+                        alamat = it
+                    }
+                )
+
