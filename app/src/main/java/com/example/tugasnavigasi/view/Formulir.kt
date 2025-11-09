@@ -107,3 +107,32 @@ fun FormPendaftaran(
                 modifier = Modifier,
                 verticalArrangement = Arrangement.Top
             )
+            {
+                Text(
+                    text = stringResource(id = R.string.nama_lengkap),
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = FontFamily.SansSerif,
+                    color = colorResource(id = R.color.coklat),
+                    modifier = Modifier
+                        .padding(top = 20.dp, start = 20.dp)
+                )
+
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                OutlinedTextField(
+                    value = namaLengkap,
+                    singleLine = true,
+                    shape = MaterialTheme.shapes.medium,
+                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
+                        .height(height = 70.dp),
+                    label = {
+                        Text(
+                            text = "Isikan nama lengkap",
+                            color = colorResource(id = R.color.coklat)
+                        )
+                    },
+                    onValueChange = {
+                        namaLengkap = it
+                    }
+                )
+
