@@ -136,3 +136,39 @@ fun FormPendaftaran(
                     }
                 )
 
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                Text(
+                    text = stringResource(id = R.string.jenis_kelamin),
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = FontFamily.SansSerif,
+                    color = colorResource(id = R.color.coklat),
+                    modifier = Modifier
+                        .padding(top = 20.dp, start = 20.dp)
+                )
+
+                Row {
+                    gender.forEach { item ->
+                        Row(
+                            modifier = Modifier
+                                .selectable(
+                                    selected = jenisKelamin == item,
+                                    onClick = {
+                                        jenisKelamin = item
+                                    }
+                                ),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(
+                                selected = jenisKelamin == item,
+                                onClick = {
+                                    jenisKelamin = item
+                                })
+                            Text(
+                                text = item,
+                                fontSize = 20.sp,
+                                color = colorResource(id = R.color.coklat)
+                            )
+                        }
+                    }
+                }
+
