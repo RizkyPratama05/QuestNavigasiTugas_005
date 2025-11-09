@@ -172,3 +172,60 @@ fun FormPendaftaran(
                     }
                 }
 
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                Text(
+                    text = stringResource(id = R.string.status),
+                    fontWeight = FontWeight.Medium,
+                    fontFamily = FontFamily.SansSerif,
+                    color = colorResource(id = R.color.coklat),
+                    modifier = Modifier
+                        .padding(top = 20.dp, start = 20.dp)
+                )
+
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                ExposedDropdownMenuBox(
+                    expanded = expanded,
+                    onExpandedChange = { expanded = !expanded }
+                ) {
+                    OutlinedTextField(
+                        value = selectedStatus,
+                        onValueChange = {},
+                        readOnly = true,
+                        shape = MaterialTheme.shapes.medium,
+                        label = {
+                            Text(
+                                "Pilih status kawin",
+                                color = colorResource(id = R.color.coklat)
+                            )
+                        },
+                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                        modifier = Modifier.fillMaxWidth().menuAnchor()
+                            .padding(start = 20.dp, end = 20.dp).height(height = 70.dp)
+                    )
+
+                    ExposedDropdownMenu(
+                        containerColor = Color.White,
+                        expanded = expanded,
+                        onDismissRequest = { expanded = false }
+                    ) {
+                        statusList.forEach { status ->
+                            DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        status,
+                                        color = colorResource(id = R.color.coklat)
+                                    )
+                                },
+                                onClick = {
+                                    selectedStatus = status
+                                    expanded = false
+                                }
+                            )
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.padding(top = 10.dp))
+
