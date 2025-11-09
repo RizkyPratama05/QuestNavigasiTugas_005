@@ -93,3 +93,13 @@ fun FormPendaftaran(
             modifier = Modifier.padding(top = 70.dp)
         )
 
+        Spacer(modifier = Modifier.padding(top = 20.dp))
+
+        Card(
+            modifier = Modifier.fillMaxWidth().height(height = 660.dp),
+            colors = CardDefaults.cardColors(
+                containerColor = colorResource(id = R.color.white).copy(
+                    alpha = 0.4f
+                )
+            )
+        ) {
