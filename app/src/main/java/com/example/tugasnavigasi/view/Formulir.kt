@@ -83,4 +83,13 @@ fun FormPendaftaran(
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-}
+        }
+        Text(
+            text = stringResource(id = R.string.formulir),
+            fontFamily = FontFamily.Serif,
+            fontSize = 25.sp,
+            fontWeight = FontWeight.Bold,
+            color = colorResource(id = R.color.coklat),
+            modifier = Modifier.padding(top = 70.dp)
+        )
+
