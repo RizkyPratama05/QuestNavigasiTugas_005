@@ -257,3 +257,50 @@ fun FormPendaftaran(
                     }
                 )
 
+                Spacer(modifier = Modifier.padding(top = 40.dp))
+
+                Row(modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 20.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically) {
+                    OutlinedButton(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(50.dp)
+                            .padding(end = 8.dp),
+                        border = BorderStroke(2.dp, colorResource(id = R.color.coklat)),
+                        onClick = OnKembaliBtnClick
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.kembali),
+                            color = colorResource(id = R.color.coklat),
+                            fontSize = 16.sp
+                        )
+                    }
+
+                    Spacer(modifier = Modifier.width(width = 40.dp))
+
+                    Button(
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(50.dp)
+                            .padding(end = 8.dp),
+                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coklat)),
+                        onClick = {
+                            namaLK = namaLengkap
+                            jk = jenisKelamin
+                            stts = selectedStatus
+                            almt = alamat
+
+                            showDialog = true
+                        }
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.submit),
+                            color = Color.White,
+                            fontSize = 16.sp
+                        )
+                    }
+                }
+
