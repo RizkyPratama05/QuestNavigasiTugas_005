@@ -44,7 +44,7 @@ data class FormData(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ListData(
-    OnBerandaBtnClick : () -> Unit,
+    onBerandaBtnClick : () -> Unit,
     OnFormulirBtnClick: () -> Unit
 ){
     val dataList = listOf(
@@ -116,7 +116,7 @@ fun ListData(
                         modifier = Modifier
                             .width(160.dp).padding(bottom = 30.dp).height(height = 60.dp),
                         shape = MaterialTheme.shapes.medium,
-                        onClick = OnBerandaBtnClick
+                        onClick = onBerandaBtnClick
                     ) {
                         Text(
                             text = stringResource(R.string.beranda),

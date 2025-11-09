@@ -69,6 +69,9 @@ fun FormPendaftaran(
     var selectedStatus by remember { mutableStateOf("") }
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
     var showDialog by remember { mutableStateOf(false) }
+    var showErrorDialog by remember { mutableStateOf(false) }
+    var errorMessage by remember { mutableStateOf("") }
+
 
     Box {
         Image(
@@ -83,253 +86,288 @@ fun FormPendaftaran(
                 .padding(20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-        }
-        Text(
-            text = stringResource(id = R.string.formulir),
-            fontFamily = FontFamily.Serif,
-            fontSize = 25.sp,
-            fontWeight = FontWeight.Bold,
-            color = colorResource(id = R.color.coklat),
-            modifier = Modifier.padding(top = 70.dp)
-        )
-
-        Spacer(modifier = Modifier.padding(top = 20.dp))
-
-        Card(
-            modifier = Modifier.fillMaxWidth().height(height = 660.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = colorResource(id = R.color.white).copy(
-                    alpha = 0.4f
-                )
+            Text(
+                text = stringResource(id = R.string.formulir),
+                fontFamily = FontFamily.Serif,
+                fontSize = 25.sp,
+                fontWeight = FontWeight.Bold,
+                color = colorResource(id = R.color.coklat),
+                modifier = Modifier.padding(top = 70.dp)
             )
-        ) {
-            Column(
-                modifier = Modifier,
-                verticalArrangement = Arrangement.Top
-            )
-            {
-                Text(
-                    text = stringResource(id = R.string.nama_lengkap),
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif,
-                    color = colorResource(id = R.color.coklat),
-                    modifier = Modifier
-                        .padding(top = 20.dp, start = 20.dp)
+
+            Spacer(modifier = Modifier.padding(top = 20.dp))
+
+            Card(
+                modifier = Modifier.fillMaxWidth().height(height = 660.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorResource(id = R.color.white).copy(
+                        alpha = 0.4f
+                    )
                 )
-
-                Spacer(modifier = Modifier.padding(top = 10.dp))
-
-                OutlinedTextField(
-                    value = namaLengkap,
-                    singleLine = true,
-                    shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
-                        .height(height = 70.dp),
-                    label = {
-                        Text(
-                            text = "Isikan nama lengkap",
-                            color = colorResource(id = R.color.coklat)
-                        )
-                    },
-                    onValueChange = {
-                        namaLengkap = it
-                    }
+            ) {
+                Column(
+                    modifier = Modifier,
+                    verticalArrangement = Arrangement.Top
                 )
+                {
+                    Text(
+                        text = stringResource(id = R.string.nama_lengkap),
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.SansSerif,
+                        color = colorResource(id = R.color.coklat),
+                        modifier = Modifier
+                            .padding(top = 20.dp, start = 20.dp)
+                    )
 
-                Spacer(modifier = Modifier.padding(top = 10.dp))
+                    Spacer(modifier = Modifier.padding(top = 10.dp))
 
-                Text(
-                    text = stringResource(id = R.string.jenis_kelamin),
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif,
-                    color = colorResource(id = R.color.coklat),
-                    modifier = Modifier
-                        .padding(top = 20.dp, start = 20.dp)
-                )
+                    OutlinedTextField(
+                        value = namaLengkap,
+                        singleLine = true,
+                        shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
+                            .height(height = 70.dp),
+                        label = {
+                            Text(
+                                text = "Isikan nama lengkap",
+                                color = colorResource(id = R.color.coklat)
+                            )
+                        },
+                        onValueChange = {
+                            namaLengkap = it
+                        }
+                    )
 
-                Row {
-                    gender.forEach { item ->
-                        Row(
-                            modifier = Modifier
-                                .selectable(
+                    Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                    Text(
+                        text = stringResource(id = R.string.jenis_kelamin),
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.SansSerif,
+                        color = colorResource(id = R.color.coklat),
+                        modifier = Modifier
+                            .padding(top = 20.dp, start = 20.dp)
+                    )
+
+                    Row {
+                        gender.forEach { item ->
+                            Row(
+                                modifier = Modifier
+                                    .selectable(
+                                        selected = jenisKelamin == item,
+                                        onClick = {
+                                            jenisKelamin = item
+                                        }
+                                    ),
+                                verticalAlignment = Alignment.CenterVertically) {
+                                RadioButton(
                                     selected = jenisKelamin == item,
                                     onClick = {
                                         jenisKelamin = item
-                                    }
-                                ),
-                            verticalAlignment = Alignment.CenterVertically) {
-                            RadioButton(
-                                selected = jenisKelamin == item,
-                                onClick = {
-                                    jenisKelamin = item
-                                })
-                            Text(
-                                text = item,
-                                fontSize = 20.sp,
-                                color = colorResource(id = R.color.coklat)
-                            )
+                                    })
+                                Text(
+                                    text = item,
+                                    fontSize = 20.sp,
+                                    color = colorResource(id = R.color.coklat)
+                                )
+                            }
                         }
                     }
-                }
 
-                Spacer(modifier = Modifier.padding(top = 10.dp))
+                    Spacer(modifier = Modifier.padding(top = 10.dp))
 
-                Text(
-                    text = stringResource(id = R.string.status),
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif,
-                    color = colorResource(id = R.color.coklat),
-                    modifier = Modifier
-                        .padding(top = 20.dp, start = 20.dp)
-                )
+                    Text(
+                        text = stringResource(id = R.string.status),
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.SansSerif,
+                        color = colorResource(id = R.color.coklat),
+                        modifier = Modifier
+                            .padding(top = 20.dp, start = 20.dp)
+                    )
 
-                Spacer(modifier = Modifier.padding(top = 10.dp))
+                    Spacer(modifier = Modifier.padding(top = 10.dp))
 
-                ExposedDropdownMenuBox(
-                    expanded = expanded,
-                    onExpandedChange = { expanded = !expanded }
-                ) {
+                    ExposedDropdownMenuBox(
+                        expanded = expanded,
+                        onExpandedChange = { expanded = !expanded }
+                    ) {
+                        OutlinedTextField(
+                            value = selectedStatus,
+                            onValueChange = {},
+                            readOnly = true,
+                            shape = MaterialTheme.shapes.medium,
+                            label = {
+                                Text(
+                                    "Pilih status kawin",
+                                    color = colorResource(id = R.color.coklat)
+                                )
+                            },
+                            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                            modifier = Modifier.fillMaxWidth().menuAnchor()
+                                .padding(start = 20.dp, end = 20.dp).height(height = 70.dp)
+                        )
+
+                        ExposedDropdownMenu(
+                            containerColor = Color.White,
+                            expanded = expanded,
+                            onDismissRequest = { expanded = false }
+                        ) {
+                            statusList.forEach { status ->
+                                DropdownMenuItem(
+                                    text = {
+                                        Text(
+                                            status,
+                                            color = colorResource(id = R.color.coklat)
+                                        )
+                                    },
+                                    onClick = {
+                                        selectedStatus = status
+                                        expanded = false
+                                    }
+                                )
+                            }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.padding(top = 10.dp))
+
+                    Text(
+                        text = stringResource(id = R.string.alamat),
+                        fontWeight = FontWeight.Medium,
+                        fontFamily = FontFamily.SansSerif,
+                        color = colorResource(id = R.color.coklat),
+                        modifier = Modifier
+                            .padding(top = 20.dp, start = 20.dp)
+                    )
+
+                    Spacer(modifier = Modifier.padding(top = 10.dp))
+
                     OutlinedTextField(
-                        value = selectedStatus,
-                        onValueChange = {},
-                        readOnly = true,
+                        value = alamat,
+                        singleLine = true,
                         shape = MaterialTheme.shapes.medium,
+                        modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
+                            .height(height = 70.dp),
                         label = {
                             Text(
-                                "Pilih status kawin",
+                                text = "Isikan alamat",
                                 color = colorResource(id = R.color.coklat)
                             )
                         },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
-                        modifier = Modifier.fillMaxWidth().menuAnchor()
-                            .padding(start = 20.dp, end = 20.dp).height(height = 70.dp)
+                        onValueChange = {
+                            alamat = it
+                        }
                     )
 
-                    ExposedDropdownMenu(
-                        containerColor = Color.White,
-                        expanded = expanded,
-                        onDismissRequest = { expanded = false }
-                    ) {
-                        statusList.forEach { status ->
-                            DropdownMenuItem(
-                                text = {
-                                    Text(
-                                        status,
-                                        color = colorResource(id = R.color.coklat)
-                                    )
-                                },
-                                onClick = {
-                                    selectedStatus = status
-                                    expanded = false
-                                }
-                            )
-                        }
-                    }
-                }
+                    Spacer(modifier = Modifier.padding(top = 40.dp))
 
-                Spacer(modifier = Modifier.padding(top = 10.dp))
-
-                Text(
-                    text = stringResource(id = R.string.alamat),
-                    fontWeight = FontWeight.Medium,
-                    fontFamily = FontFamily.SansSerif,
-                    color = colorResource(id = R.color.coklat),
-                    modifier = Modifier
-                        .padding(top = 20.dp, start = 20.dp)
-                )
-
-                Spacer(modifier = Modifier.padding(top = 10.dp))
-
-                OutlinedTextField(
-                    value = alamat,
-                    singleLine = true,
-                    shape = MaterialTheme.shapes.medium,
-                    modifier = Modifier.fillMaxWidth().padding(start = 20.dp, end = 20.dp)
-                        .height(height = 70.dp),
-                    label = {
-                        Text(
-                            text = "Isikan alamat",
-                            color = colorResource(id = R.color.coklat)
-                        )
-                    },
-                    onValueChange = {
-                        alamat = it
-                    }
-                )
-
-                Spacer(modifier = Modifier.padding(top = 40.dp))
-
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically) {
-                    OutlinedButton(
+                    Row(
                         modifier = Modifier
-                            .weight(1f)
-                            .height(50.dp)
-                            .padding(end = 8.dp),
-                        border = BorderStroke(2.dp, colorResource(id = R.color.coklat)),
-                        onClick = OnKembaliBtnClick
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
                     ) {
-                        Text(
-                            text = stringResource(id = R.string.kembali),
-                            color = colorResource(id = R.color.coklat),
-                            fontSize = 16.sp
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.width(width = 40.dp))
-
-                    Button(
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(50.dp)
-                            .padding(end = 8.dp),
-                        colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coklat)),
-                        onClick = {
-                            namaLK = namaLengkap
-                            jk = jenisKelamin
-                            stts = selectedStatus
-                            almt = alamat
-
-                            showDialog = true
-                        }
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.submit),
-                            color = Color.White,
-                            fontSize = 16.sp
-                        )
-                    }
-                }
-
-                if (showDialog) {
-                    AlertDialog(
-                        onDismissRequest = { showDialog = false },
-                        containerColor = colorResource(id = R.color.coklat),
-                        title = {
+                        OutlinedButton(
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(50.dp)
+                                .padding(end = 8.dp),
+                            border = BorderStroke(2.dp, colorResource(id = R.color.coklat)),
+                            onClick = OnKembaliBtnClick
+                        ) {
                             Text(
-                                text = "Berhasil",
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White,
-                                fontSize = 22.sp
+                                text = stringResource(id = R.string.kembali),
+                                color = colorResource(id = R.color.coklat),
+                                fontSize = 16.sp
                             )
-                        },
-                        text = {
-                            Column {
-                                Text("Nama: $namaLengkap", color = Color.White)
-                                Text("Jenis Kelamin: $jenisKelamin", color = Color.White)
-                                Text("Tanggal Lahir: $selectedStatus", color = Color.White)
-                                Text("Alamat: $alamat", color = Color.White)
-                            }
-                        },
-                        confirmButton = {
-                            Button(onClick = { showDialog = false }, colors = ButtonDefaults.buttonColors(containerColor = Color.White)) {
-                                Text("OK", color = colorResource(id = R.color.coklat))
-                            }
                         }
-                    )
+
+                        Spacer(modifier = Modifier.width(width = 40.dp))
+
+                        Button(
+                            modifier = Modifier
+                                .weight(1f)
+                                .height(50.dp)
+                                .padding(end = 8.dp),
+                            colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.coklat)),
+                            onClick = {
+                                if (namaLengkap.isBlank() || jenisKelamin.isBlank() || selectedStatus.isBlank() || alamat.isBlank()) {
+                                    errorMessage = "Harap isi semua data terlebih dahulu!"
+                                    showErrorDialog = true
+                                } else {
+                                    namaLK = namaLengkap
+                                    jk = jenisKelamin
+                                    stts = selectedStatus
+                                    almt = alamat
+                                    showDialog = true
+                                }
+                            }
+                        ) {
+                            Text(
+                                text = stringResource(id = R.string.submit),
+                                color = Color.White,
+                                fontSize = 16.sp
+                            )
+                        }
+                    }
+
+                    if (showDialog) {
+                        AlertDialog(
+                            onDismissRequest = { showDialog = false },
+                            containerColor = colorResource(id = R.color.coklat),
+                            title = {
+                                Text(
+                                    text = "Berhasil",
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White,
+                                    fontSize = 22.sp
+                                )
+                            },
+                            text = {
+                                Column {
+                                    Text("Nama: $namaLengkap", color = Color.White)
+                                    Text("Jenis Kelamin: $jenisKelamin", color = Color.White)
+                                    Text("Tanggal Lahir: $selectedStatus", color = Color.White)
+                                    Text("Alamat: $alamat", color = Color.White)
+                                }
+                            },
+                            confirmButton = {
+                                Button(
+                                    onClick = { showDialog = false },
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.White)
+                                ) {
+                                    Text("OK", color = colorResource(id = R.color.coklat))
+                                }
+                            }
+                        )
+                    }
+
+                    if (showErrorDialog) {
+                        AlertDialog(
+                            onDismissRequest = { showErrorDialog = false },
+                            containerColor = Color.Red.copy(alpha = 0.9f),
+                            title = {
+                                Text(
+                                    text = "Data Belum Lengkap!",
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White,
+                                    fontSize = 22.sp
+                                )
+                            },
+                            text = {
+                                Text(errorMessage, color = Color.White)
+                            },
+                            confirmButton = {
+                                Button(
+                                    onClick = { showErrorDialog = false },
+                                    colors = ButtonDefaults.buttonColors(containerColor = Color.White)
+                                ) {
+                                    Text("OK", color = Color.Red)
+                                }
+                            }
+                        )
+                    }
                 }
             }
         }
