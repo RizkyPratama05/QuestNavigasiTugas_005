@@ -304,3 +304,34 @@ fun FormPendaftaran(
                     }
                 }
 
+                if (showDialog) {
+                    AlertDialog(
+                        onDismissRequest = { showDialog = false },
+                        containerColor = colorResource(id = R.color.coklat),
+                        title = {
+                            Text(
+                                text = "Berhasil",
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White,
+                                fontSize = 22.sp
+                            )
+                        },
+                        text = {
+                            Column {
+                                Text("Nama: $namaLengkap", color = Color.White)
+                                Text("Jenis Kelamin: $jenisKelamin", color = Color.White)
+                                Text("Tanggal Lahir: $selectedStatus", color = Color.White)
+                                Text("Alamat: $alamat", color = Color.White)
+                            }
+                        },
+                        confirmButton = {
+                            Button(onClick = { showDialog = false }, colors = ButtonDefaults.buttonColors(containerColor = Color.White)) {
+                                Text("OK", color = colorResource(id = R.color.coklat))
+                            }
+                        }
+                    )
+                }
+            }
+        }
+    }
+}
