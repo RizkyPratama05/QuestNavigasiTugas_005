@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tugasnavigasi.ui.theme.TugasNavigasiTheme
+import com.example.tugasnavigasi.view.FormPendaftaran
 import com.example.tugasnavigasi.view.TampilanUtama
 
 class MainActivity : ComponentActivity() {
@@ -20,9 +21,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TugasNavigasiTheme {
-                    TampilanUtama(
-                        OnMasukBtnClick = {}
-                    )
+                FormPendaftaran(
+                    OnKembaliBtnClick = {},
+                    OnSubmitBtnClick = {}
+                )
                 }
             }
         }
