@@ -77,3 +77,10 @@ fun FormPendaftaran(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(20.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+}
