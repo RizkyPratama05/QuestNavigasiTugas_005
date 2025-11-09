@@ -70,3 +70,10 @@ fun FormPendaftaran(
     val gender: List<String> = listOf("Laki-laki", "Perempuan")
     var showDialog by remember { mutableStateOf(false) }
 
+    Box {
+        Image(
+            modifier = Modifier.fillMaxSize(),
+            painter = painterResource(id = R.drawable.coklatbg),
+            contentDescription = null,
+            contentScale = ContentScale.Crop
+        )
