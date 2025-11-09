@@ -78,7 +78,7 @@ fun FormPendaftaran(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.coklatbg),
             contentDescription = null,
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Crop,
         )
         Column(
             modifier = Modifier
